@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_hospital_management" name="HOM"/>
+    <menuitem id="menu_hospital_patient" name="patients" parent="menu_hospital_management"
+              action="action_hospital_patient" groups="group_patient" sequence="10"/>
+    <menuitem id="menu_hospital_reception" parent="menu_hospital_management" name="Reception"
+              action="action_hospital_reception" groups="group_reception" sequence="20"/>
+    <menuitem id="menu_hospital_doctor" parent="menu_hospital_management" name="Doctor"
+              action="action_hospital_doctor" groups="group_doctor" sequence="30"/>
+    <menuitem id="menu_hospital_appointment" parent="menu_hospital_management" name="Appointments"
+              sequence="40"/>
+    <menuitem id="menu_patient_appointment" parent="menu_hospital_appointment" name="Appointments"
+              action="action_hospital_patient_appointments"
+              sequence="10"/>
+</odoo>

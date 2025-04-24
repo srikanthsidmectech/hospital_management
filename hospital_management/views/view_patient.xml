@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_patient_list" model="ir.ui.view">
+        <field name="name">hospital.patient.form.view</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <list string="Patients">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="patient_age"/>
+                <field name="date" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form.view</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_send_email" string="invoice send by email"
+                            type="object" class="oe_highlight" data-hotkey="w"/>
+                    <button name="action_confirm" string="Confirm"
+                            type="object" class="oe_highlight" data-hotkey="w"
+                            invisible="not invoices or status != 'draft'"/>
+
+                    <button name="action_reset_to_draft" string="reset to draft "
+                            type="object" data-hotkey="w"
+                            invisible="status == 'draft'"/>
+
+                    <field name="status" widget="statusbar" statusbar_visible="draft,confirm" class="oe_highlight"/>
+
+                </header>
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="return_invoices" type="object" string="invoices"
+                                icon="fa-pencil"
+                                class="oe_stat_button">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">invoices</span>
+                            </div>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Confirmed"
+                            invisible="status != 'confirm'"/>
+                    <widget name="web_ribbon" title="Draft"
+                            invisible="status != 'draft'"/>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="email"/>
+                            <field name="patient_age"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="is_in_ward"/>
+                            <field name="from_date" invisible="is_in_ward == False"/>
+                            <field name="to_date" invisible="is_in_ward == False"/>
+                            <field name="company_id"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Invoices">
+                            <field name="invoices">
+                                <list editable="bottom">
+                                    <field name="product"/>
+                                    <field name="qty"/>
+                                    <field name="unit_price"/>
+                                    <field name="sub_total"/>
+                                    <field name="amount_due"/>
+                                </list>
+                                <form>
+                                    <group>
+                                        <field name="product" readonly="parent.status  != 'draft'"/>
+                                        <field name="qty" readonly="parent.status  != 'draft'"/>
+                                        <field name="unit_price" readonly="parent.status  != 'draft'"/>
+                                        <field name="sub_total" readonly="parent.status  != 'draft'"/>
+                                        <field name="amount_due" readonly="parent.status  != 'draft'"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_search_patients" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Action">
+                <field name="patient_id"/>
+                <group>
+                    <filter name="has_email" string="Has Email" domain="[('email', '!=', False)]"/>
+                    <separator/>
+                    <filter string="APPOINTMENTS" name="appointment" context="{'group_by':'appointment_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">list,form,search</field>
+        <field name="view_id" ref="view_patient_list"/>
+    </record>
+</odoo>

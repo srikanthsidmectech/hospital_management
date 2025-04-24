@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_reception_list" model="ir.ui.view">
+        <field name="name">hospital.reception.form.view</field>
+        <field name="model">hospital.reception</field>
+        <field name="arch" type="xml">
+            <list string="receptionists">
+                <field name="reception_id"/>
+                <field name="age"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_reception_form" model="ir.ui.view">
+        <field name="name">hospital.reception.form.view</field>
+        <field name="model">hospital.reception</field>
+        <field name="arch" type="xml">
+            <form string="receptionists">
+                <sheet>
+                    <group>
+                        <field name="reception_id"/>
+                        <field name="age"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hospital_reception" model="ir.actions.act_window">
+        <field name="name">receptionists</field>
+        <field name="res_model">hospital.reception</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_reception_list"/>
+    </record>
+</odoo>

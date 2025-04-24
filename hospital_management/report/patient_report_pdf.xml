@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="report_patient_pdf">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page" style="padding: 20px;">
+                            <div class="oe_structure"/>
+                            <h1 class="text-center">Patient Details</h1>
+                            <!--                            style="border-collapse: collapse; text-align:center; line-height:38px;"-->
+                            <div style="width: 100%; height: 100%;">
+                                <div>
+                                    <table class="table table-bordered mt32 text-center" style="margin:auto;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="font-size:24px; font-weight:bold;">Patient Name</td>
+                                                <td style="">
+                                                    <span t-field="doc.patient_id.name"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="">Age</td>
+                                                <td style="">
+                                                    <span t-field="doc.patient_age"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <t t-if="doc.date">
+                                                    <td style="">Date</td>
+                                                    <td style="">
+                                                        <span t-esc="doc.date.strftime('%d-%m-%Y')"/>
+                                                    </td>
+                                                </t>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!--                                style="border-collapse: collapse;"-->
+                            <table class="table table-sm mt16 mb32">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            hello
+                                        </th>
+                                        <th>
+                                            hello
+                                        </th>
+                                        <th>
+                                            hello
+                                        </th>
+                                        <th>
+                                            hello
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            hello
+                                        </td>
+                                        <td>
+                                            hello
+                                        </td>
+                                        <td>
+                                            hello
+                                        </td>
+                                        <td>
+                                            hello
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="oe_structure"/>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
