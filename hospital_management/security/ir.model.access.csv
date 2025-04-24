@@ -5,3 +5,4 @@ access_hospital_reception,access_hospital_reception,model_hospital_reception,,1,
 access_hospital_patient_invoices,access_hospital_patient_invoices,model_hospital_patient_invoices,,1,1,1,1
 access_hospital_patient_appointments,access_hospital_patient_appointments,model_hospital_patient_appointments,,1,1,1,1
 access_patient_appointments_line,access_patient_appointments_line,model_patient_appointments_line,,1,1,1,1
+access_sale_report_wizard,access_sale_report_wizard,model_sale_report_wizard,,1,1,1,1

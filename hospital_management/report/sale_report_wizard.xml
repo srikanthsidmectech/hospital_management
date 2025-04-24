@@ -1,0 +1,78 @@
+<odoo>
+    <template id="report_sale_wizard_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>Sale Report</h1>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Customer
+                                </th>
+                                <th>
+                                    From Date
+                                </th>
+                                <th>
+                                    To Date
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2>
+                                        <span t-esc="wizard.get('partner_name')"/>
+                                    </h2>
+                                </td>
+                                <td>
+                                    <span t-esc="wizard.get('from_date')"/>
+                                </td>
+                                <td>
+                                    <span t-esc="wizard.get('to_date')"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Reference</th>
+                                <th>Sales Person</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="sale_orders" t-as="order">
+                                <tr>
+                                    <td>
+                                        <span t-esc="order.get('name')"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order.get('sales_person')"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order.get('amount_total')"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    <span>Total Amount</span>
+                                </td>
+
+                                <td>
+                                    <span t-esc="wizard.get('total_amount')"/>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

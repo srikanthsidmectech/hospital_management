@@ -3,7 +3,7 @@
     "description": "patients,receptionists,doctors and accountants managed in Hospital",
     "version": "18.0",
     'license': 'LGPL-3',
-    "depends": ['mail', "account", ],
+    "depends": ['mail', "account", "sale", ],
     "data":
         [
             "security/security.xml",
@@ -15,6 +15,8 @@
             "views/view_reciptionsts.xml",
             "views/view_patient_appointment.xml",
             "report/patient_report_pdf.xml",
+            "wizard/view_sale_report_wizard.xml",
+            "report/sale_report_wizard.xml",
             "report/reports.xml",
             "views/menu_items.xml", ],
 }

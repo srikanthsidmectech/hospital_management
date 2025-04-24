@@ -12,4 +12,6 @@
     <menuitem id="menu_patient_appointment" parent="menu_hospital_appointment" name="Appointments"
               action="action_hospital_patient_appointments"
               sequence="10"/>
+    <menuitem id="menu_sale_wizard_report" parent="sale.menu_sale_report" name="Sales Report"
+              action="action_sale_report_wizard"/>
 </odoo>

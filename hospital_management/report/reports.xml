@@ -28,4 +28,16 @@
                ref="hospital_management.model_hospital_patient"/>  <!-- removes the action from the Print menu (forced False value for update) -->
     </record>
 
+
+    <record id="sale_wizard_report_pdf" model="ir.actions.report">
+        <field name="name">PDF</field>
+        <field name="model">sale.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hospital_management.report_sale_wizard_pdf</field>
+        <field name="report_file">hospital_management.report_sale_wizard_pdf</field>
+        <!--        <field name="print_report_name">(object.id)</field>-->
+        <field name="binding_model_id"
+               ref="hospital_management.model_sale_report_wizard"/>
+    </record>
+
 </odoo>
