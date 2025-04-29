@@ -3,7 +3,7 @@
     "description": "patients,receptionists,doctors and accountants managed in Hospital",
     "version": "18.0",
     'license': 'LGPL-3',
-    "depends": ['mail', "account", "sale", ],
+    "depends": ['mail', "account", "sale", "web", ],
     "data":
         [
             "security/security.xml",
